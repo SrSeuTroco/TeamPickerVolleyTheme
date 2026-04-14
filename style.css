@@ -1,15 +1,16 @@
+/* ================= GERAL ================= */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #ff8c00, #ffc66d);
     margin: 0;
-    padding: 20px;
+    padding: 0;
     text-align: center;
     min-height: 100vh;
 }
 
-h1 { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+h1 { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); margin-top: 20px;}
 
-.container { max-width: 900px; margin: auto; }
+.container { max-width: 900px; margin: auto; padding: 20px; }
 
 .card {
     background: white;
@@ -19,12 +20,53 @@ h1 { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
+.hidden { display: none !important; }
+
+/* ================= NAVEGAÇÃO ================= */
+nav {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav button { background: white; color: #ff7b00; margin: 0; }
+nav button:hover { background: #ffe0b2; color: #ff7b00; }
+
+/* ================= MENU HOME ================= */
+.home-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.menu-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    border-bottom: 4px solid #ff7b00;
+}
+
+.menu-card h2 { color: #ff7b00; margin-top: 0;}
+
+/* ================= ELEMENTOS DE FORMULÁRIO ================= */
 input {
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #ccc;
     margin: 5px;
-    width: 200px;
+    font-size: 16px;
 }
 
 button {
@@ -36,12 +78,13 @@ button {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 16px;
 }
 
 button:hover { background: #e06900; transform: translateY(-2px); }
+button:disabled { background: #ccc; cursor: not-allowed; transform: none; }
 
-button:disabled { background: #ccc; cursor: not-allowed; }
-
+/* ================= JOGADORES ================= */
 .players {
     margin-top: 15px;
     display: grid;
@@ -59,9 +102,9 @@ button:disabled { background: #ccc; cursor: not-allowed; }
 }
 
 .remove { color: #ff4444; cursor: pointer; font-weight: bold; }
-
 .counter { margin-top: 10px; font-weight: bold; color: #333; }
 
+/* ================= TIMES ================= */
 .teams {
     display: flex;
     flex-wrap: wrap;
@@ -74,7 +117,7 @@ button:disabled { background: #ccc; cursor: not-allowed; }
     background: #ffffff;
     padding: 15px;
     border-radius: 15px;
-    min-width: 220px;
+    min-width: 200px;
     min-height: 180px;
     position: relative;
     overflow: visible;
@@ -85,7 +128,8 @@ button:disabled { background: #ccc; cursor: not-allowed; }
     border: 2px solid transparent;
 }
 
-.team h3 { margin: 0 0 15px 0; color: #ff7b00; }
+.team h3 { margin: 0 0 5px 0; color: #ff7b00; }
+.team-victory { font-size: 0.8em; color: #555; margin-bottom: 10px; font-weight: bold; }
 
 .chip {
     background: #ffe0b2;
@@ -98,11 +142,55 @@ button:disabled { background: #ccc; cursor: not-allowed; }
     font-size: 0.9em;
 }
 
-/* DESTAQUES DE JOGO */
+/* ================= SELEÇÃO DE TIMES (CARDS) ================= */
+.card-selection-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 15px;
+}
+
+.team-column {
+    flex: 1;
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vs-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #ff7b00;
+}
+
+.select-card {
+    background: white;
+    border: 3px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.select-card:hover { transform: scale(1.02); border-color: #aaa;}
+
+.select-card.active-a { border-color: #0047AB; background: #e6f0ff; color: #0047AB; }
+.select-card.active-b { border-color: #D22B2B; background: #ffe6e6; color: #D22B2B; }
+
+/* ================= EFEITOS DE SORTEIO ================= */
 .highlight1 { background-color: #fff3e0 !important; border: 2px solid #ff7b00 !important; }
 .highlight2 { background-color: #e0f7fa !important; border: 2px solid #00acc1 !important; }
 
-/* REGRA DA BOLA */
 .ball-possession {
     box-shadow: 0 0 20px rgba(255, 123, 0, 0.4);
     transform: scale(1.05);
@@ -120,7 +208,6 @@ button:disabled { background: #ccc; cursor: not-allowed; }
     font-weight: bold;
 }
 
-/* ANIMAÇÕES */
 .falling-player {
     position: absolute;
     top: -40px;
@@ -143,3 +230,104 @@ button:disabled { background: #ccc; cursor: not-allowed; }
     from { transform: translateY(0); }
     to { transform: translateY(-10px); }
 }
+
+/* ================= TELA DO PLACAR DA PARTIDA ================= */
+.scoreboard-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.score-side {
+    flex: 1;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lado-a { border-top: 10px solid #0047AB; }
+.lado-b { border-top: 10px solid #D22B2B; }
+
+.vics-badge {
+    background: #f8f8f8;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #555;
+    margin-top: -10px;
+    border: 1px solid #ddd;
+}
+
+.pontos {
+    font-size: 100px;
+    font-weight: bold;
+    line-height: 1;
+    margin: 15px 0;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s;
+}
+
+.pontos:active { transform: scale(0.95); }
+.lado-a .pontos { color: #0047AB; }
+.lado-b .pontos { color: #D22B2B; }
+
+.btn-subtrair {
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
+}
+.btn-subtrair:hover { background: #e0e0e0; }
+
+/* ================= PÓDIO / STANDBY ================= */
+.podium-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-weight: bold;
+    background: #f8f8f8;
+    color: #333;
+}
+
+.podium-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+}
+
+.podium-members {
+    width: 100%;
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #555;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 8px 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border-left: 3px solid #ccc;
+}
+
+.rank-1 { background: linear-gradient(45deg, #ffd700, #ffec8b); border: 2px solid #daa520; }
+.rank-1 .podium-members { border-left-color: #daa520; }
+
+.rank-2 { background: linear-gradient(45deg, #e0e0e0, #ffffff); border: 2px solid #a9a9a9; }
+.rank-2 .podium-members { border-left-color: #a9a9a9; }
+
+.rank-3 { background: linear-gradient(45deg, #cd7f32, #f4a460); border: 2px solid #8b4513; }
+.rank-3 .podium-members { border-left-color: #8b4513; }
+
+.rank-4 { background: #f0f0f0; border: 1px solid #ddd; }
