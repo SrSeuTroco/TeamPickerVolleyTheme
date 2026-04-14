@@ -3,34 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorteador de V么lei Pr贸 & Placar</title>
+    <title>Sorteador de Vôlei Pró & Placar</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav id="navbar" class="hidden">
-        <button onclick="showScreen('home')">馃彔 Home</button>
-        <button onclick="showScreen('cadastro')">馃懃 Jogadores</button>
-        <button onclick="showScreen('sorteio')">馃幉 Sorteio</button>
-        <button onclick="showScreen('placar-config')">馃彁 Placar</button>
-        <button onclick="showPodium()">馃弳 P贸dio</button>
+        <button onclick="showScreen('home')">🏐 Home</button>
+        <button onclick="showScreen('cadastro')">👥 Jogadores</button>
+        <button onclick="showScreen('sorteio')">🎲 Sorteio</button>
+        <button onclick="showScreen('placar-config')">📊 Placar</button>
+        <button onclick="showPodium()">🏆 Pódio</button>
     </nav>
 
     <div class="container">
 
         <div id="screen-home" class="screen">
-            <h1>馃彁 V么lei Pr贸 App</h1>
+            <h1>📊 Vôlei Pró App</h1>
             <div class="home-menu">
                 <div class="menu-card" onclick="showScreen('cadastro')">
-                    <h2>馃懃 Cadastrar Jogadores</h2>
+                    <h2>👥 Cadastrar Jogadores</h2>
                     <p>Adicione ou remova a galera do jogo.</p>
                 </div>
                 <div class="menu-card" onclick="showScreen('sorteio')">
-                    <h2>馃幉 Sortear Times</h2>
-                    <p>Zera as vit贸rias, embaralha e define as equipes.</p>
+                    <h2>🎲 Sortear Times</h2>
+                    <p>Zera as vitórias, embaralha e define as equipes.</p>
                 </div>
                 <div class="menu-card" onclick="showScreen('placar-config')">
-                    <h2>馃彁 Ir para o Placar</h2>
+                    <h2>📊 Ir para o Placar</h2>
                     <p>Escolha os times e inicie a partida.</p>
                 </div>
             </div>
@@ -52,8 +52,10 @@
                 <label>Quantidade de Times:</label>
                 <input type="number" id="teamCount" value="2" min="2">
                 <br><br>
-                <button id="drawTeamsBtn" style="font-size: 1.2em; padding: 15px 30px;">馃幉 Sortear</button>
-                <p style="font-size: 0.8em; color: #666; margin-top: 10px;">Aten莽茫o: Um novo sorteio zera as vit贸rias do campeonato.</p>
+                <button id="drawTeamsBtn" style="font-size: 1.2em; padding: 15px 30px;">🎲 Sortear</button>
+                <p style="font-size: 0.8em; color: #666; margin-top: 10px;">
+                    Atenção: Um novo sorteio zera as vitórias do campeonato.
+                </p>
                 <div id="teamsArea" class="teams"></div>
             </div>
         </div>
@@ -61,7 +63,9 @@
         <div id="screen-placar-config" class="screen hidden">
             <h1>Configurar Partida</h1>
             <div class="card">
-                <p style="font-weight: bold; font-size: 1.2em;">Selecione os times para o jogo:</p>
+                <p style="font-weight: bold; font-size: 1.2em;">
+                    Selecione os times para o jogo:
+                </p>
                 
                 <div class="card-selection-container">
                     <div class="team-column" id="colTeamA">
@@ -78,11 +82,17 @@
                 </div>
 
                 <br>
-                <label style="font-weight: bold;">A partida vai at茅 quantos pontos?</label>
+                <label style="font-weight: bold;">
+                    A partida vai até quantos pontos?
+                </label>
                 <br>
-                <input type="number" id="maxScoreInput" value="25" min="1" style="text-align: center; font-weight: bold; font-size: 1.2em; width: 80px;">
+                <input type="number" id="maxScoreInput" value="25" min="1"
+                    style="text-align: center; font-weight: bold; font-size: 1.2em; width: 80px;">
                 <br><br>
-                <button onclick="startMatch()" style="width: 100%; max-width: 300px; font-size: 1.2em;">鈻讹笍 Iniciar Partida</button>
+                <button onclick="startMatch()"
+                    style="width: 100%; max-width: 300px; font-size: 1.2em;">
+                    ▶️ Iniciar Partida
+                </button>
             </div>
         </div>
 
@@ -92,31 +102,41 @@
             <div class="scoreboard-container">
                 <div class="score-side lado-a">
                     <h2 id="nameTeamA">Time A</h2>
-                    <div class="vics-badge">馃弳 <span id="vicA">0</span> Vit贸rias</div>
+                    <div class="vics-badge">🏆 <span id="vicA">0</span> Vitórias</div>
                     <div class="pontos" id="scoreA" onclick="addPoint('A')">0</div>
                     <button class="btn-subtrair" onclick="subPoint('A')">-1 Ponto</button>
                 </div>
 
                 <div class="score-side lado-b">
                     <h2 id="nameTeamB">Time B</h2>
-                    <div class="vics-badge">馃弳 <span id="vicB">0</span> Vit贸rias</div>
+                    <div class="vics-badge">🏆 <span id="vicB">0</span> Vitórias</div>
                     <div class="pontos" id="scoreB" onclick="addPoint('B')">0</div>
                     <button class="btn-subtrair" onclick="subPoint('B')">-1 Ponto</button>
                 </div>
             </div>
             <br>
-            <button style="background: #dc3545; width: 100%; max-width: 400px;" onclick="showPodium()">Encerrar e ver P贸dio</button>
+            <button style="background: #dc3545; width: 100%; max-width: 400px;"
+                onclick="showPodium()">
+                Encerrar e ver Pódio
+            </button>
         </div>
 
         <div id="screen-podium" class="screen hidden">
-            <h1>馃弳 Hall da Fama</h1>
+            <h1>🏆 Hall da Fama</h1>
             <div class="card" style="max-width: 600px; margin: auto;">
-                <p style="font-weight: bold; font-size: 1.2em; margin-bottom: 20px;">Ranking atual do campeonato:</p>
-                <div id="podiumArea">
-                    </div>
+                <p style="font-weight: bold; font-size: 1.2em; margin-bottom: 20px;">
+                    Ranking atual do campeonato:
+                </p>
+                <div id="podiumArea"></div>
                 <br>
-                <button style="width: 100%; margin-bottom: 10px; font-size: 1.1em;" onclick="showScreen('placar-config')">馃彁 Pr贸xima Partida</button>
-                <button style="background: #6c757d; width: 100%;" onclick="showScreen('sorteio')">馃幉 Fazer Novo Sorteio</button>
+                <button style="width: 100%; margin-bottom: 10px; font-size: 1.1em;"
+                    onclick="showScreen('placar-config')">
+                    📊 Próxima Partida
+                </button>
+                <button style="background: #6c757d; width: 100%;"
+                    onclick="showScreen('sorteio')">
+                    🎲 Fazer Novo Sorteio
+                </button>
             </div>
         </div>
 
